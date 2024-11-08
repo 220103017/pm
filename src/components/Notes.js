@@ -102,8 +102,8 @@ function Notes() {
                 onClick={() => handleEditNote(index)}
               >
                 <h3>{note.title}</h3>
-                <button className="delete-icon" onClick={(e) => { e.stopPropagation(); handleDeleteNote(index); }}>
-                  &#x2026; {/* "..." icon */}
+                <button className="delete-icon material-symbols-outlined" onClick={(e) => { e.stopPropagation(); 
+                  handleDeleteNote(index); }}>delete
                 </button>
               </div>
             ))}

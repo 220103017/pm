@@ -9,15 +9,9 @@ function SearchHistory({ history, onNewChat, onChatSelect, onDeleteChat }) {
           history.map((chat, index) => (
             <div key={index} className="chat-item">
               <p onClick={() => onChatSelect(index)}>{chat.title || 'Untitled Chat'}</p>
-              <button
-                className="delete-icon"
-                onClick={(e) => {
-                  e.stopPropagation(); // Prevent triggering onChatSelect when deleting
-                  onDeleteChat(index); // Call delete function
-                }}
-              >
-                &#x2026; {/* "..." for delete */}
-              </button>
+              <button className="delete-icon material-symbols-outlined" onClick={(e) => { e.stopPropagation(); 
+                  onDeleteChat(index); }}>delete
+                </button>
             </div>
           ))
         ) : (

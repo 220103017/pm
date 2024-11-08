@@ -9,13 +9,12 @@ import Notes from './components/Notes';
 import './style.css';
 
 function App() {
-  const [chats, setChats] = useState([]); // Store chat history
-  const [selectedChat, setSelectedChat] = useState(null); // Track the currently selected chat
-  const [authPageOpen, setAuthPageOpen] = useState(false); // Auth modal state
-  const [authType, setAuthType] = useState(null); // Type of authentication (login/register)
-  const [aiResponse, setAiResponse] = useState(''); // Store AI response
+  const [chats, setChats] = useState([]);
+  const [selectedChat, setSelectedChat] = useState(null);
+  const [authPageOpen, setAuthPageOpen] = useState(false);
+  const [authType, setAuthType] = useState(null);
+  const [aiResponse, setAiResponse] = useState('');
 
-  // Load chats from localStorage on app load
   useEffect(() => {
     const storedChats = JSON.parse(localStorage.getItem('chats'));
     if (storedChats) {
@@ -23,12 +22,10 @@ function App() {
     }
   }, []);
 
-  // Save chats to localStorage whenever they change
   useEffect(() => {
     localStorage.setItem('chats', JSON.stringify(chats));
   }, [chats]);
 
-  // Handle search and AI response
   const handleSearch = (query) => {
     const userMessage = { text: query, sender: 'user' };
     const aiMessage = { text: `AI Response to: ${query}`, sender: 'ai' };
@@ -36,7 +33,6 @@ function App() {
     setAiResponse(aiMessage.text);
 
     if (selectedChat !== null) {
-      // Update the selected chat with new messages
       const updatedChats = chats.map((chat, index) => {
         if (index === selectedChat) {
           return { ...chat, messages: [...chat.messages, userMessage, aiMessage] };
@@ -45,46 +41,44 @@ function App() {
       });
       setChats(updatedChats);
     } else {
-      // If no chat is selected, create a new chat
       const newChat = { title: query.substring(0, 15), messages: [userMessage, aiMessage] };
       setChats([newChat, ...chats]);
       setSelectedChat(0);
     }
   };
 
-  // Open the authentication modal
   const handleAuthPageOpen = (type) => {
-    setAuthType(type);
-    setAuthPageOpen(true);
+    setAuthType(type); // Set the authentication type (register/login)
+    setAuthPageOpen(true); // Open the authentication page
   };
 
-  // Close the authentication modal
   const handleAuthPageClose = () => {
-    setAuthPageOpen(false);
+    setAuthPageOpen(false); // Close the authentication page
   };
 
-  // Create a new chat
+  const handleAuthSuccess = () => {
+    setAuthPageOpen(false); // Close the auth page
+    setAuthType(null); // Reset auth type
+  };
+
   const createNewChat = () => {
     const newChat = { title: '', messages: [] };
     setChats([newChat, ...chats]);
     setSelectedChat(0);
   };
 
-  // Select a chat from the history
   const handleChatSelect = (index) => {
     setSelectedChat(index);
   };
 
-  // Delete a chat from the history
   const handleDeleteChat = (index) => {
     const updatedChats = chats.filter((_, i) => i !== index);
     setChats(updatedChats);
     if (selectedChat === index) {
-      setSelectedChat(null); // Deselect chat if it's the one being deleted
+      setSelectedChat(null);
     }
   };
 
-  // Automatically set the chat title after the first message
   useEffect(() => {
     if (selectedChat !== null && chats[selectedChat].messages.length > 0 && chats[selectedChat].title === '') {
       const firstMessage = chats[selectedChat].messages[0].text;
@@ -102,9 +96,8 @@ function App() {
     <div className="app-container">
       <Header onAuthPageOpen={handleAuthPageOpen} />
 
-      {/* Authentication Page */}
       {authPageOpen ? (
-        <AuthPage authType={authType} onClose={handleAuthPageClose} />
+        <AuthPage authType={authType} onClose={handleAuthPageClose} onAuthSuccess={handleAuthSuccess} />
       ) : (
         <div className="main-content-container">
           <div className="left-section">
@@ -112,7 +105,7 @@ function App() {
               history={chats}
               onNewChat={createNewChat}
               onChatSelect={handleChatSelect}
-              onDeleteChat={handleDeleteChat} // Pass handleDeleteChat here
+              onDeleteChat={handleDeleteChat}
             />
             <Notes />
           </div>

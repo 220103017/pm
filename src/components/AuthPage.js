@@ -1,10 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-function AuthPage({ authType, onClose }) {
+function AuthPage({ authType, onClose, onAuthSuccess }) {
   const [isSignUp, setIsSignUp] = useState(authType === 'register');
+  const [showPassword, setShowPassword] = useState(false);
+
+  useEffect(() => {
+    setIsSignUp(authType === 'register');
+  }, [authType]);
 
   const handleAuthSwitch = () => {
     setIsSignUp(!isSignUp);
+  };
+
+  const handleSignUp = () => {
+    console.log('User signed up');
+    onAuthSuccess();
+  };
+
+  const handleSignIn = () => {
+    console.log('User signed in');
+    onAuthSuccess();
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -24,8 +43,20 @@ function AuthPage({ authType, onClose }) {
                 <div className="form-content">
                   <input type="text" placeholder="Enter your name..." />
                   <input type="email" placeholder="Enter your email..." />
-                  <input type="password" placeholder="Enter your password..." />
-                  <button>Sign Up</button>
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    placeholder="Введите пароль"
+                  />
+                  <div className="checkbox-wrapper">
+                    <input
+                      type="checkbox"
+                      id="show-password"
+                      checked={showPassword}
+                      onChange={togglePasswordVisibility}
+                    />
+                    <label htmlFor="show-password">Показать пароль</label>
+                  </div>
+                  <button onClick={handleSignUp}>Sign Up</button>
                 </div>
               </div>
             </div>
@@ -38,9 +69,21 @@ function AuthPage({ authType, onClose }) {
               <div className="auth-form">
                 <div className="form-content">
                   <input type="email" placeholder="Enter your email..." />
-                  <input type="password" placeholder="Enter your password..." />
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    placeholder="Введите пароль"
+                  />
+                  <div className="checkbox-wrapper">
+                    <input
+                      type="checkbox"
+                      id="show-password"
+                      checked={showPassword}
+                      onChange={togglePasswordVisibility}
+                    />
+                    <label htmlFor="show-password">Показать пароль</label>
+                  </div>
                   <a href="#" className="forgot-password">Forgot Your Password?</a>
-                  <button>Sign In</button>
+                  <button onClick={handleSignIn}>Sign In</button>
                 </div>
               </div>
             </div>

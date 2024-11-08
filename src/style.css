@@ -1,13 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=delete');
 /* General Styles */
 body {
   font-family: 'San Francisco', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f5f5f5;
+  background-color: rgb(191, 209, 183);
 }
 
 .app-container {
-  background-color: #e8e5e5f5;
+  background-color: rgb(212, 227, 205);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -40,7 +41,7 @@ body {
 }
 
 .signup-button, .login-button {
-  background-color: #3a250f;
+  background-color: rgb(108, 132, 99);
   color: #fff;
   padding: 10px 20px;
   border-radius: 8px;
@@ -51,7 +52,7 @@ body {
 }
 
 .signup-button:hover, .login-button:hover {
-  background-color: #775d45;
+  background-color: rgb(167, 181, 162);
 }
 
 /* Main Content */
@@ -109,7 +110,7 @@ body {
 .search-title {
   font-size: 22px;
   margin-bottom: 20px;
-  color: #3F2305;
+  color: black;
 }
 
 .search-bar-container {
@@ -131,7 +132,7 @@ body {
 .search-button {
   padding: 12px 20px;
   font-size: 16px;
-  background-color: #3F2305;
+  background-color: rgb(108, 132, 99);
   color: white;
   border: 1px solid #ccc;
   border-radius: 0 10px 10px 0;
@@ -139,7 +140,7 @@ body {
 }
 
 .search-button:hover {
-  background-color: #5e3611;
+  background-color: rgb(145, 161, 139);
 }
 
 /* Search History Container */
@@ -162,7 +163,6 @@ body {
   position: sticky;
   top: 0; /* Stick to the top of the container */
   background-color: #fff;
-  z-index: 10; /* Ensure it stays above the chat items */
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -202,7 +202,7 @@ body {
   width: 100%;
   padding: 10px;
   font-size: 16px;
-  background-color: #3F2305;
+  background-color: rgb(108, 132, 99);
   color: white;
   border-radius: 8px;
   border: none;
@@ -212,7 +212,7 @@ body {
 }
 
 .new-chat-button:hover {
-  background-color: #5e3611;
+  background-color:rgb(155, 173, 149);
 }
 
 /* Delete Icon */
@@ -270,7 +270,7 @@ body {
   width: 100%;
   padding: 10px;
   font-size: 16px;
-  background-color: #3F2305;
+  background-color: rgb(108, 132, 99);
   color: white;
   border-radius: 8px;
   border: none;
@@ -279,7 +279,7 @@ body {
 }
 
 .notes-button:hover {
-  background-color: #5e3611;
+  background-color: rgb(150, 164, 145);
 }
 
 /* Note Editor Window (Modal) */
@@ -341,7 +341,7 @@ body {
   width: 100%;
   padding: 10px;
   font-size: 16px;
-  background-color: #3F2305;
+  background-color: rgb(108, 132, 99);
   color: white;
   border-radius: 8px;
   border: none;
@@ -349,7 +349,7 @@ body {
 }
 
 .save-button:hover {
-  background-color: #5e3611;
+  background-color: rgb(140, 158, 134);
 }
 
 /* Notes Scroll Area */
@@ -418,21 +418,21 @@ body {
   padding: 10px;
   margin-bottom: 10px;
   cursor: pointer;
-  background-color: #f5f5f5;
+  background-color: rgb(207, 222, 202);
   border-radius: 6px;
-  border: 1px solid #ccc;
+  border: 1px solid rgb(140, 158, 134);
 }
 
 .recommendation-item:hover {
-  background-color: #f0f0f0;
+  background-color: rgb(230, 242, 227);
 }
 
 .recommendation-details {
   padding: 10px;
   margin-top: 10px;
-  background-color: #f9f9f9;
+  background-color: rgb(207, 222, 202);
   border-radius: 6px;
-  border: 1px solid #ece6e6;
+  border: 1px solid rgb(207, 222, 202);
 }
 
 .auth-container {
@@ -473,7 +473,7 @@ body {
 }
 
 .sign-up-container {
-  background-color: #b08484;
+  background-color: rgb(149, 163, 142);
   color: #ffffff;
   order: 2;
   transition: all 0.3s;
@@ -509,7 +509,7 @@ body {
   padding: 0.8rem;
   font-size: 1rem;
   color: #ffffff;
-  background-color: #b08484;
+  background-color: rgb(149, 163, 142);
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -517,7 +517,7 @@ body {
 }
 
 .form-content button:hover {
-  background-color: #a07373;
+  background-color: rgb(178, 192, 171)
 }
 
 .forgot-password {
@@ -531,7 +531,7 @@ body {
 }
 
 .switch-link {
-  color: #b08484;
+  color: rgb(149, 163, 142);
   cursor: pointer;
   font-weight: bold;
   text-decoration: underline;
@@ -545,4 +545,21 @@ body {
   border: 1px solid #ffffff;
   background-color: #ffffff;
   border-radius: 10px;
-} 
+}
+
+.checkbox-wrapper {
+  display: flex;
+  align-items: center; 
+  margin-top: 1rem; 
+  justify-content: flex-start;
+}
+
+.checkbox-wrapper input {
+  margin-right: 8px; 
+}
+
+.checkbox-wrapper label {
+  font-size: 0.9rem; 
+  color: #3f2305; 
+  cursor: pointer;
+}

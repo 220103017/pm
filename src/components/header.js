@@ -12,7 +12,7 @@ function Header({ onAuthPageOpen }) {
           Sign Up
         </button>
         <button className="login-button" onClick={() => onAuthPageOpen('login')}>
-          Log In
+          Sign In
         </button>
       </div>
     </header>
